@@ -1,9 +1,11 @@
 # Receipt Processor
 
+# Details
+This Project is built on top of a template Express-Node.js Typescript configuration that provides boilerplate TS configs, Utils and Commonly used functionalities.
+The project deals with 2 REST API endpoints
 
-
-# Setup
-
+1. POST - receipts/process : To add receipts
+2. GET - receipts/{id}/points : To fetch points for a specific receipt ID
 
 ## Development
 > This project was setup using Node.js v18.5. Please use specified version for best experience.
