@@ -44,5 +44,9 @@
 #### Response - {Points: <Points>}
 #### ![alt text](image-1.png)
 
+6. Important files to look for
+#### 1. src/middleware/validation.middleware.ts - Logic for receipt validity at the middleware level 
+#### 2. src/controllers/receipt.controller.ts - Logic for point calculation and storage in memory
 
-6. Run unit tests using ```npm run test```
+7. Run unit tests using ```npm run test```
+
