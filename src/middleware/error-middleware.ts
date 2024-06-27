@@ -1,12 +1,12 @@
 import { ApiError } from "@/types/interfaces/interfaces.common";
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 
 // @desc Handles error responses from throw errors
 
-export const errorResponse = (error: ApiError, _req: Request, res: Response, _next: NextFunction) => {
-   res.status(error.statusCode).json({
-      success: false,
-      data: error.data,
-      message: error.message,
-   });
+export const errorResponse = (error: ApiError, _req: Request, res: Response, next: NextFunction) => {
+
+ return  res.status(error.statusCode).json(
+      error.message,
+   );
 };
+

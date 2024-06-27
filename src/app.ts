@@ -2,8 +2,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import helmet from "helmet";
-import hpp from "hpp";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 
@@ -11,10 +9,12 @@ import rateLimit from "express-rate-limit";
 dotenv.config();
 
 // Import routes from the ./routes
-import user from "@/routes/user-route";
+import receipt from "@/routes/receipt-route";
+import { verify } from "./middleware/auth-middleware";
+import { errorResponse } from "./middleware/error-middleware";
 
 // Setup constant variables
-const PORT = process.env.PORT || 5000;
+const PORT = 8000;
 const RATE_TIME_LIMIT = Number(process.env.RATE_TIME_LIMIT) || 15;
 const RATE_REQUEST_LIMIT = Number(process.env.RATE_REQUEST_LIMIT) || 100;
 
@@ -39,16 +39,13 @@ app.use(
 // Enable CORS
 app.use(cors());
 
-// Security Headers
-app.use(helmet());
+// Setup routing with the a verify middleware that runs for all requests with "/receipts and passes control to receipt middleware"
+app.use("/receipts", verify, receipt);
 
-// Secure against param pollutions
-app.use(hpp());
+// Register custom error handler
+app.use(errorResponse)
 
-// Setup routing
-app.use("/users", user);
-
-// Listen to specified port in .env or default 5000
-app.listen(PORT, () => {
+// Listen to specified port in .env or default 8000
+app.listen(PORT || 8000, () => {
   console.log(`Server is listening on: ${PORT}`);
 });
