@@ -45,3 +45,4 @@
 #### ![alt text](image-1.png)
 
 
+6. Run unit tests using ```npm run test```
