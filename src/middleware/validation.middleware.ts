@@ -24,8 +24,7 @@ export const validateReceipt = (req: Request, res: Response, next: NextFunction)
 
     for (const item of receipt.items) {
         if (typeof item.shortDescription !== 'string' || !shortDescriptionRegex.test(item.shortDescription)) {
-           console.log('here', item.shortDescription, shortDescriptionRegex.test(item.shortDescription))
-           validationError()
+             validationError()
         }
         if (typeof item.price !== 'string' || !priceRegex.test(item.price)) {
             validationError()

@@ -34,7 +34,7 @@ export const  processReceipts = (receipt: Receipt): string => {
 export const getPoints = async(req: Request, res: Response, next: NextFunction) => {
     try{
         const id = req.params.id;
-        console.log(points, points[id])
+     
        if(!points[id]){
         throw new ApiError({}, 404, 'No receipt found for that id' )   // propogate error to catch
        }
